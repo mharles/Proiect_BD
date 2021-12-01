@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        h2 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-weight: 500;
+        }
+    </style>
+    <title>Persoana noua</title>
+</head>
+
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a href="http://localhost:4200" class="nav-link">Start <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="http://localhost:4200/apeluri" class="nav-link">Apeluri</a>
+            </li>
+            <li class="nav-item">
+              <a href="http://localhost:4200/servicii" class="nav-link">Servicii</a>
+            </li>
+          </ul>
+          <h2 style="margin-right: 40%; margin-left: auto; color: white;">Adauga persoana</h2>
+        </div>
+      </nav>
+    <br>
+    <form action="/persoane" method="POST">
+        <div class="form-group" style="display: inline-block;">
+            <label for="nume" style="display: inline-block;"><b>Nume</b></label>
+            <input type="text" placeholder="nume" name="nume" id="nume" class="form-control" required style="display: inline-block;">
+        </div>
+        <div class="form-group" style="display: inline-block;">
+            <label for="prenume"><b>Prenume</b></label>
+            <input type="text" placeholder="prenume" name="prenume" id="prenume" class="form-control " required>
+        </div>
+        <br>
+        <div class="form-group" style="display: inline-block;">
+            <label for="oras"><b>Oras</b></label>
+            <input type="text" placeholder="oras" name="oras" id="oras" class="form-control" required>
+        </div>
+        <div class="form-group" style="display: inline-block;">
+            <label for="strada"><b>Strada</b></label>
+            <input type="text" placeholder="strada" name="strada" id="strada" class="form-control " required>
+        </div>
+        <div class="form-group" style="display: inline-block;">
+            <label for="numar"><b>Numar</b></label>
+            <input type="number" placeholder="numar" name="numar" id="numar" class="form-control " required min="1">
+        </div>
+        <div class="form-group">
+            <label for="cnp"><b>CNP</b></label>
+            <input type="number" placeholder="cnp" name="cnp" id="cnp" class="form-control col-3" required min="1000000000000" max="9999999999999">
+        </div>
+        <div class="form-group">
+            <label for="telefon"><b>Telefon</b></label>
+            <input type="number" placeholder="telefon" name="telefon" id="telefon" class="form-control col-3" required min="0000000000" max="9999999999" pattern="/(07)\d{8}/">
+        </div>
+        <div class="form-group">
+            <label for="sex"><b>Sex</b></label>
+            <!-- <input type="dropdown" placeholder="sex" name="sex" id="sex" class="form-control col-3" required> -->
+            <select name="sex" id="sex" class="form-select">
+                <option value="M">M</option>
+                <option value="F">F</option>
+              </select>
+        </div>
+        <button class="btn btn-primary">Adauga</button>
+    </form>
+
+    <a href="/persoane">Inapoi la lista de persoane</a>
+</body>
+
+</html>

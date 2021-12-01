@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        h2 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+    </style>
+    <title>Cauze</title>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a href="http://localhost:4200" class="nav-link">Start <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="http://localhost:4200/apeluri" class="nav-link">Apeluri</a>
+            </li>
+            <li class="nav-item">
+              <a href="http://localhost:4200/servicii" class="nav-link">Servicii</a>
+            </li>
+          </ul>
+          <h2 style="margin-right: 27%; margin-left: auto; color: white;">Cauzele apelurilor efectuate de <%= nume.toUpperCase() %> <%= prenume.toUpperCase() %></h2>
+        </div>
+      </nav>
+      <br>
+
+    <% if (rezultat.length != 0) { %>
+        <h2></h2>
+        <% for (let r of rezultat ) {%>
+        <ul>
+           <li><b><%=r['Denumire'].toUpperCase() %></b></li> 
+        </ul>
+
+        <% } %>
+        <% } else { %>
+             <h2>Ne pare rau, persoana <%= nume.toUpperCase() %> <%= prenume.toUpperCase() %>  nu a efectuat niciun apel la 112!</h2>
+         <% } %>  
+     </body>
+     
+
+     
+</body>
+</html>

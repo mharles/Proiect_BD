@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        h2 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-weight: 500;
+        }
+    </style>
+    <title>Operator</title>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a href="http://localhost:4200" class="nav-link">Start <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="http://localhost:4200/apeluri" class="nav-link">Apeluri</a>
+            </li>
+            <li class="nav-item">
+              <a href="http://localhost:4200/servicii" class="nav-link">Servicii</a>
+            </li>
+          </ul>
+          <h2 style="margin-right: 32%; margin-left: auto; color: white;">Detalii despre operatorul selectat</h2>
+        </div>
+      </nav>
+      <br>
+
+    <% if (operator) { %>
+ 
+   <p><b>Nume:</b> <%=operator['Nume'] %></p>
+   <p><b>Prenume:</b> <%=operator['Prenume'] %></p>
+   <p><b>Data Angajarii:</b> <%=operator['DataAngajare'] %></p>
+   <p><b>UID:</b> <%=operator['UID'] %></p>
+   
+   <a href="/operatori/<%= operator.OperatorID %>/edit" style="float: left; color: white; margin-right: 20px;" class="btn btn-success">Editeaza</a>
+   <form method="POST" action="/operatori/<%= operator.OperatorID %>?_method=DELETE">
+    <button class="btn btn-danger">Sterge</button>
+   </form>
+   <% } else { %>
+        <h2>Ne pare rau, operatorul cautat nu se afla in baza noastra de date!</h2>
+    <% } %>  
+</body>
+<br>
+<a href="http://localhost:3000/operatori">Inapoi la lista cu operatori</a>
+
+</html>

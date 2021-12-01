@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        h2 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+    </style>
+    <title>Apel</title>
+</head>
+<body>
+    <% if (apel.length != 0) { %>
+        <h2>Apeluri</h2>
+        <% for (let ap of apel ) {%>
+        <p>Data: <%=ap['Data'] %></p>
+        <p>Durata: <%=ap['Durata'] %></p>
+        <p>Descriere: <%=ap['Descriere'] %></p>
+        <br>
+        <% } %>
+        <% } else { %>
+             <h2>Ne pare rau, niciun apel nu a fost inregistrat in aceasta data!</h2>
+         <% } %>  
+     </body>
+     
+     <a href="http://localhost:4200">Inapoi la meniul principal</a>
+</body>
+</html>
