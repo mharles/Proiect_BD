@@ -8,6 +8,14 @@ const methodOverride = require('method-override')
 
 //app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
+
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*")
+    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE, OPTIONS")
+    next()
+})
+
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(methodOverride('_method'))
@@ -440,6 +448,30 @@ app.get('/cauze/:nume/:prenume', (req, res) => {
         })
     })
 })
+
+
+
+
+// app.get('/test', (req, res) => {
+//     const conn = new sql.ConnectionPool(dbconfig)
+//     const nume = req.params.nume
+//     const prenume = req.params.prenume
+//     conn.connect(function (err) {
+//         if (err) 
+//             return console.log(err)
+//         const request = new sql.Request(conn)
+//         request.query(`select * from Persoane`, async function (err, recordset) {
+//             if (err) 
+//                 return console.log(err)
+//             else {
+//                 const rezultat = await recordset['recordset']
+//                 console.log(rezultat)
+//                 res.send(recordset['recordset'])
+//             }
+//             conn.close()
+//         })
+//     })
+// })
 
 
 
