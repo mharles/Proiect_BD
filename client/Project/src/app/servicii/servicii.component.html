@@ -1,0 +1,41 @@
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a routerLink="" class="nav-link">Start</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/apeluri" class="nav-link">Apeluri</a>
+        </li>
+        <li class="nav-item active">
+          <a routerLink="/servicii" class="nav-link">Servicii <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      <h2 style="margin-right: 47%; margin-left: auto; color: white;">Servicii</h2>
+    </div>
+  </nav>
+</body>
+<br>
+<form>
+  <h3>Afiseaza serviciile ce au fost efectuate pentru o anumita cauza</h3>
+  <div class="form-group">
+  <label for="cauza"><b>Cauza:</b></label>
+  <input type="text" name="cauza" id="cauza" placeholder="Cauza" class="form-control">
+</div>
+  <button type="submit" class="btn btn-primary" (click)="servicii($event)">Vezi servicii</button>
+</form>
+<br>
+<br>
+<br>
+<form>
+  <button type="submit" class="btn btn-info" (click)="top($event)" style="display: flex; margin: auto;">Afiseaza serviciile disponibile, de la cel mai folosit la cel mai putin folosit</button>
+</form>
+

@@ -1,0 +1,58 @@
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a routerLink="" class="nav-link">Start </a>
+        </li>
+        <li class="nav-item active">
+          <a routerLink="/apeluri" class="nav-link">Apeluri <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/servicii" class="nav-link">Servicii</a>
+        </li>
+      </ul>
+      <h2 style="margin-right: 47%; margin-left: auto; color: white;">Apeluri</h2>
+    </div>
+  </nav>
+  <br>
+
+  <form>
+    <h3>Cauta apelurile date de o anumita persoana </h3>
+    <div class="form-group">
+    <label for="nume"><b>Nume Persoana:</b></label>
+    <input type="text" name="nume" id="nume" placeholder="Nume" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="prenume"><b>Prenume Persoana:</b></label>
+    <input type="text" name="prenume" id="prenume" placeholder="Prenume" class="form-control">
+  </div>
+    <button type="submit" class="btn btn-primary" (click)="apeluri($event)">Cauta apeluri</button>
+  </form>
+  <br>
+  <form>
+    <h2>Cauta apelurile preluate de un anumit operator </h2>
+    <div class="form-group">
+    <label for="numeo"><b>Nume Operator:</b></label>
+    <input type="text" name="numeo" id="numeo" placeholder="Nume" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="prenumeo"><b>Prenume Operator:</b></label>
+    <input type="text" name="prenumeo" id="prenumeo" placeholder="Prenume" class="form-control">
+  </div>
+    <button type="submit" class="btn btn-primary" (click)="apelurio($event)">Cauta apeluri</button>
+  </form>
+  <br>
+  <form>
+
+    <button type="submit" class="btn btn-danger" (click)="urgente($event)" style="display: flex; margin: auto;">Vezi apelurile ce reprezinta o urgenta</button>
+  </form>
+
+</body>
