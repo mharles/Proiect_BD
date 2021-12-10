@@ -18,7 +18,7 @@
             text-decoration: none;
         }
     </style>
-    <title>Apeluri</title>
+    <title>Top Apeluri</title>
 </head>
 <body>
 
@@ -35,26 +35,25 @@
               <a href="http://localhost:4200/servicii" class="nav-link">Servicii</a>
             </li>
           </ul>
-          <h2 style="margin-right: 47%; margin-left: auto; color: white;">Apeluri</h2>
+          <h2 style="margin-right: 40%; margin-left: auto; color: white;">Cele mai lungi apeluri</h2>
         </div>
       </nav>
-<br>
+      <br>
+
     <% if (rezultat.length != 0) { %>
         
         <% for (let r of rezultat ) {%>
-        <p><b>Nume:</b> <%=r['Nume'] %></p>
-        <p><b>Prenume:</b> <%=r['Prenume'] %></p>
-        <p><b>Durata:</b> <%=r['Durata'] %> minute</p>
-        <p><b>Data: </b><%=r['Data'] %></p>
-        <p><b>Descriere: </b><%=r['Descriere'] %></p>
-        <br>
-        <br>
+        <ul>
+           <li><b><%=r['Denumire'].toUpperCase() %>:</b> <%= r['Durata']%> minute - <%=r['Nume']%> <%=r['Prenume']%></li> 
+        </ul>
+
         <% } %>
         <% } else { %>
-             <h2>Ne pare rau, niciun apel nu a fost efectuat de catre <%= nm.toUpperCase()  %> <%= p.toUpperCase() %>!</h2>
+             <h2>Ne pare rau, niciun serviciu  nu a fost inregistrat in baza de date!</h2>
          <% } %>  
      </body>
      
-    
+
+     
 </body>
 </html>

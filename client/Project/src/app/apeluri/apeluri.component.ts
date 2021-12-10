@@ -43,4 +43,9 @@ export class ApeluriComponent implements OnInit {
     location.href=`http://localhost:3000/urgente`
   }
 
+  lung(e: any) {
+    e.preventDefault()
+    location.href=`http://localhost:3000/lung`
+  }
+
 }

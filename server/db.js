@@ -450,6 +450,59 @@ app.get('/cauze/:nume/:prenume', (req, res) => {
 })
 
 
+// COMPLEX 1
+app.get('/lung', (req, res) => {
+    const conn = new sql.ConnectionPool(dbconfig)
+    conn.connect(function (err) {
+        if (err) 
+            return console.log(err)
+        const request = new sql.Request(conn)
+        request.query(`select a.Durata, c.Denumire, p.Nume, p.Prenume
+        from Apeluri a
+        join Cauze c on c.CauzaID=a.CauzaID
+        join Persoane p on p.PersoanaId = a.PersoanaId
+        where a.Durata in 
+            (select max(aa.Durata)
+            from apeluri aa
+            where aa.CauzaID=a.CauzaID
+            group by CauzaID)`, async function (err, recordset) {
+            if (err) 
+                return console.log(err)
+            else {
+                const rezultat = await recordset['recordset']
+                console.log(rezultat)
+                res.render('persoana/lung', {rezultat})
+            }
+            conn.close()
+        })
+    })
+})
+
+
+// COMPLEX 2
+app.get('/angajati', (req, res) => {
+    const conn = new sql.ConnectionPool(dbconfig)
+    conn.connect(function (err) {
+        if (err) 
+            return console.log(err)
+        const request = new sql.Request(conn)
+        request.query(`select YEAR(o.DataAngajare) as AN, count(o.DataAngajare) as NR_ANG
+        from Operatori o
+        group by YEAR(o.DataAngajare)
+        having count(o.DataAngajare)>=(select top 1 count(o2.DataAngajare) from Operatori o2 group by YEAR(o2.DataAngajare)
+        order by count(o2.DataAngajare) desc)`, async function (err, recordset) {
+            if (err) 
+                return console.log(err)
+            else {
+                const rezultat = await recordset['recordset'][0]
+                console.log(rezultat)
+                res.render('persoana/angajati', {rezultat})
+            }
+            conn.close()
+        })
+    })
+})
+
 
 
 // app.get('/test', (req, res) => {
