@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServiciiComponent implements OnInit {
   cauza: string = '';
+  serviciu: string = '';
+  intervalm: number = 0;
 
   constructor() { }
 
@@ -22,9 +24,23 @@ export class ServiciiComponent implements OnInit {
     }
   }
 
+  serviciires(e: any) {
+    e.preventDefault()
+    if ((<HTMLInputElement>document.getElementById('serviciu'))!.value ) {
+      this.serviciu = (<HTMLInputElement>document.getElementById('serviciu'))!.value
+
+      location.href=`http://localhost:3000/serviciires/${this.serviciu}`
+    }
+  }
+
   top(e: any) {
     e.preventDefault()
     location.href=`http://localhost:3000/top`
   }
 
+  interval(e: any) {
+    e.preventDefault()
+
+      location.href=`http://localhost:3000/interval`
+  }
 }

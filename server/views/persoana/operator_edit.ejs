@@ -56,7 +56,7 @@
         </div>
         <div class="form-group">
             <label for="dataAngajare"><b>Data Angajarii</b></label>
-            <input type="date" placeholder="data angajare" name="dataAngajare" id="dataAngajare" class="form-control col-3" required value="<%= operator.DataAngajare %>">
+            <input type="date" placeholder="data angajare" name="dataAngajare" id="dataAngajare" class="form-control col-3" required value="<%= operator.DataAngajare.getFullYear()%>-<%=(`0` + (operator.DataAngajare.getMonth() + 1)).slice(-2)%>-<%=(`0` + operator.DataAngajare.getDate()).slice(-2)%>">
         </div>
         <div class="form-group">
             <label for="uid"><b>UID</b></label>

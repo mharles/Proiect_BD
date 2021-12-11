@@ -42,8 +42,8 @@
     <% if (operator.length != 0) { %>
         
         <% for (let o of operator ) {%>
-        <p><b>Nume:</b> <%=o['Nume'] %></p>
-        <p><b>Prenume:</b> <%=o['Prenume'] %></p>
+        <p><b>Nume:</b> <%=o['Nume'].toUpperCase() %></p>
+        <p><b>Prenume:</b> <%=o['Prenume'].toUpperCase() %></p>
         <a href="/operatori/<%= o.OperatorID %>" style="float: left;">Detalii</a>
         <br>
         <br>
@@ -51,9 +51,11 @@
         <% } else { %>
              <h2>Ne pare rau, niciun operator nu a fost inregistrat in baza de date!</h2>
          <% } %>  
-     </body>
+
      
      <a href="/operatori/new">Adauga operator</a>
+     <br>
+     <a href="http://localhost:4200">Inapoi la pagina de start</a>
     
 </body>
 </html>

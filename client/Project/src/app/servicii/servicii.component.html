@@ -34,8 +34,22 @@
 </form>
 <br>
 <br>
+<form>
+  <h3>Afiseaza serviciile ce dispun de mai multe resurse ca numar masini + numar persoane decat alt serviciu precizat</h3>
+  <div class="form-group">
+  <label for="serviciu"><b>Serviciu:</b></label>
+  <input type="text" name="serviciu" id="serviciu" placeholder="Serviciu" class="form-control">
+</div>
+  <button type="submit" class="btn btn-primary" (click)="serviciires($event)">Vezi servicii</button>
+</form>
 <br>
 <form>
   <button type="submit" class="btn btn-info" (click)="top($event)" style="display: flex; margin: auto;">Afiseaza serviciile disponibile, de la cel mai folosit la cel mai putin folosit</button>
 </form>
+<br>
+<br>
 
+<form>
+
+  <button type="submit" class="btn btn-primary" (click)="interval($event)">Afiseaza cele mai lungi interventii pentru fiecare cauza</button>
+</form>

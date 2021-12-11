@@ -44,16 +44,15 @@
         
         <% for (let r of rezultat ) {%>
         <ul>
-           <li><b><%=r['Denumire'].toUpperCase() %>:</b> <%= r['Durata']%> minute - <%=r['Nume']%> <%=r['Prenume']%></li> 
+           <li><b><%=r['Denumire'].toUpperCase() %>:</b> <%= r['Durata']%> minute - <%=r['Nume'].toUpperCase()%> <%=r['Prenume'].toUpperCase()%></li> 
         </ul>
 
         <% } %>
         <% } else { %>
              <h2>Ne pare rau, niciun serviciu  nu a fost inregistrat in baza de date!</h2>
          <% } %>  
+
+         <a href="http://localhost:4200/apeluri">Inapoi la apeluri</a>
      </body>
      
-
-     
-</body>
 </html>

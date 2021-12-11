@@ -42,14 +42,14 @@
 <br>
     <% if (persoana) { %>
   
-   <p><b>Nume:</b> <%=persoana['Nume'] %></p>
-   <p><b>Prenume:</b> <%=persoana['Prenume'] %></p>
-   <p><b>Oras:</b> <%=persoana['Oras'] %></p>
-   <p><b>Strada:</b> <%=persoana['Strada'] %></p>
+   <p><b>Nume:</b> <%=persoana['Nume'].toUpperCase() %></p>
+   <p><b>Prenume:</b> <%=persoana['Prenume'].toUpperCase() %></p>
+   <p><b>Oras:</b> <%=persoana['Oras'].toUpperCase() %></p>
+   <p><b>Strada:</b> <%=persoana['Strada'].toUpperCase() %></p>
    <p><b>Numar:</b> <%=persoana['Numar'] %></p>
-   <p><b>CNP:</b> <%=persoana['CNP'] %></p>
-   <p><b>Telefon:</b> <%=persoana['Telefon'] %></p>
-   <p><b>Sex:</b> <%=persoana['Sex'] %></p>
+   <p><b>CNP:</b> <%=persoana['CNP'].toUpperCase() %></p>
+   <p><b>Telefon:</b> <%=persoana['Telefon'].toUpperCase() %></p>
+   <p><b>Sex:</b> <%=persoana['Sex'].toUpperCase() %></p>
    <a href="/persoane/<%= persoana.PersoanaID %>/edit" style="float: left; color: white; margin-right: 20px" class="btn btn-success">Editeaza</a>
    <form method="POST" action="/persoane/<%= persoana.PersoanaID %>?_method=DELETE">
     <button class="btn btn-danger">Sterge</button>

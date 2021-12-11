@@ -42,19 +42,20 @@
     <% if (rezultat.length != 0) { %>
         
         <% for (let r of rezultat ) {%>
-        <p><b>Denumire:</b> <%=r['Denumire'] %></p>
-        <p><b>Urgenta:</b> <%=r['Urgenta'] %></p>
-        <p><b>Victime:</b> <%=r['Victime'] %></p>
-        <p><b>Pagube Materiale:</b> <%=r['PagubeMateriale'] %></p>
-        <p><b>Data:</b> <%=r['Data'] %></p>
-        <p><b>Descriere:</b> <%=r['Descriere'] %></p>
+        <p><b>Denumire:</b> <%=r['Denumire'].toUpperCase() %></p>
+        <p><b>Urgenta:</b> <%=r['Urgenta'].toUpperCase() %></p>
+        <p><b>Victime:</b> <%=r['Victime'].toUpperCase() %></p>
+        <p><b>Pagube Materiale:</b> <%=r['PagubeMateriale'].toUpperCase() %></p>
+        <p><b>Data:</b> <%=r['Data'].getDate()%>/<%=r['Data'].getMonth() + 1%>/<%=r['Data'].getFullYear()%></p>
+        <p><b>Descriere:</b> <%=r['Descriere'].toUpperCase() %></p>
         <br>
         <br>
         <% } %>
         <% } else { %>
              <h2>Ne pare rau, niciun apel nu reprezinta o urgenta momentan!</h2>
          <% } %>  
+
+         <a href="http://localhost:4200/apeluri">Inapoi la apeluri</a>
      </body>
-     
-</body>
+    
 </html>

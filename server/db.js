@@ -166,7 +166,7 @@ app.delete('/persoane/:id', (req, res) => {
         if (err) 
             return console.log(err)
         const request = new sql.Request(conn)
-        request.query(`delete from Persoane where PersoanaID=${req.params.id}`, async function (err, recordset) {
+        request.query(`delete from Apeluri where PersoanaID=${req.params.id} delete from Persoane where PersoanaID=${req.params.id}`, async function (err, recordset) {
             if (err) 
                 return console.log(err)
             else {
@@ -288,7 +288,7 @@ app.delete('/operatori/:id', (req, res) => {
         if (err) 
             return console.log(err)
         const request = new sql.Request(conn)
-        request.query(`delete from Operatori where OperatorID=${req.params.id}`, async function (err, recordset) {
+        request.query(`delete from Apeluri where OperatorID=${req.params.id} delete from Operatori where OperatorID=${req.params.id}`, async function (err, recordset) {
             if (err) 
                 return console.log(err)
             else {
@@ -479,29 +479,116 @@ app.get('/lung', (req, res) => {
 })
 
 
+
 // COMPLEX 2
-app.get('/angajati', (req, res) => {
+app.get('/interval', (req, res) => {
     const conn = new sql.ConnectionPool(dbconfig)
     conn.connect(function (err) {
         if (err) 
             return console.log(err)
         const request = new sql.Request(conn)
-        request.query(`select YEAR(o.DataAngajare) as AN, count(o.DataAngajare) as NR_ANG
-        from Operatori o
-        group by YEAR(o.DataAngajare)
-        having count(o.DataAngajare)>=(select top 1 count(o2.DataAngajare) from Operatori o2 group by YEAR(o2.DataAngajare)
-        order by count(o2.DataAngajare) desc)`, async function (err, recordset) {
+        request.query(`select c.Denumire, datediff(MINUTE, sc.OraSosire, sc.OraPlecare) as dt, sc.DataActiune
+        from Cauze c
+        join ServiciiCauze sc on c.CauzaID=sc.CauzaID
+        where datediff(MINUTE, sc.OraSosire, sc.OraPlecare) in
+            (select max(datediff(MINUTE, ssc.OraSosire, ssc.OraPlecare))
+            from ServiciiCauze ssc
+            where ssc.CauzaID=c.CauzaID
+            group by CauzaID)`, async function (err, recordset) {
             if (err) 
                 return console.log(err)
             else {
-                const rezultat = await recordset['recordset'][0]
+                const rezultat = await recordset['recordset']
                 console.log(rezultat)
-                res.render('persoana/angajati', {rezultat})
+                res.render('persoana/interval', {rezultat})
             }
             conn.close()
         })
     })
 })
+
+
+// COMPLEX 3
+app.get('/vechime/:numeop/:prenumeop', (req, res) => {
+    const conn = new sql.ConnectionPool(dbconfig)
+    const numeop = req.params.numeop
+    const prenumeop = req.params.prenumeop
+    conn.connect(function (err) {
+        if (err) 
+            return console.log(err)
+        const request = new sql.Request(conn)
+        request.query(`select o.Nume, o.Prenume, o.DataAngajare from Operatori o
+        where o.DataAngajare <
+            (select oo.DataAngajare
+            from Operatori oo
+            where oo.Nume='${req.params.numeop}' and oo.Prenume='${req.params.prenumeop}')
+        order by o.DataAngajare asc`, async function (err, recordset) {
+            if (err) 
+                return console.log(err)
+            else {
+                const rezultat = await recordset['recordset']
+                console.log(rezultat)
+                res.render('persoana/vechime', {rezultat, numeop, prenumeop})
+            }
+            conn.close()
+        })
+    })
+})
+
+
+// COMPLEX 4
+app.get('/serviciires/:serviciu', (req, res) => {
+    const conn = new sql.ConnectionPool(dbconfig)
+    const serviciu = req.params.serviciu
+    conn.connect(function (err) {
+        if (err) 
+            return console.log(err)
+        const request = new sql.Request(conn)
+        request.query(`select s.NumeServiciu, sum(s.NumarPersoane + s.NumarMasini) as total
+        from Servicii s
+        group by s.NumeServiciu
+        having sum(s.NumarPersoane + s.NumarMasini) >
+            (select sum(ss.NumarPersoane + ss.NumarMasini)
+            from Servicii ss
+            where ss.NumeServiciu='${req.params.serviciu}')`, async function (err, recordset) {
+            if (err) 
+                return console.log(err)
+            else {
+                const rezultat = await recordset['recordset']
+                console.log(rezultat)
+                res.render('persoana/resurse', {rezultat, serviciu})
+            }
+            conn.close()
+        })
+    })
+})
+
+
+
+
+// // COMPLEX 2
+// app.get('/angajati', (req, res) => {
+//     const conn = new sql.ConnectionPool(dbconfig)
+//     conn.connect(function (err) {
+//         if (err) 
+//             return console.log(err)
+//         const request = new sql.Request(conn)
+//         request.query(`select YEAR(o.DataAngajare) as AN, count(o.DataAngajare) as NR_ANG
+//         from Operatori o
+//         group by YEAR(o.DataAngajare)
+//         having count(o.DataAngajare)>=(select top 1 count(o2.DataAngajare) from Operatori o2 group by YEAR(o2.DataAngajare)
+//         order by count(o2.DataAngajare) desc)`, async function (err, recordset) {
+//             if (err) 
+//                 return console.log(err)
+//             else {
+//                 const rezultat = await recordset['recordset'][0]
+//                 console.log(rezultat)
+//                 res.render('persoana/angajati', {rezultat})
+//             }
+//             conn.close()
+//         })
+//     })
+// })
 
 
 

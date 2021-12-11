@@ -43,10 +43,10 @@
 
     <% if (operator) { %>
  
-   <p><b>Nume:</b> <%=operator['Nume'] %></p>
-   <p><b>Prenume:</b> <%=operator['Prenume'] %></p>
-   <p><b>Data Angajarii:</b> <%=operator['DataAngajare'] %></p>
-   <p><b>UID:</b> <%=operator['UID'] %></p>
+   <p><b>Nume:</b> <%=operator['Nume'].toUpperCase() %></p>
+   <p><b>Prenume:</b> <%=operator['Prenume'].toUpperCase() %></p>
+   <p><b>Data Angajarii:</b> <%=operator['DataAngajare'].getDate()%>/<%=operator['DataAngajare'].getMonth() + 1%>/<%=operator['DataAngajare'].getFullYear()%></p>
+   <p><b>UID:</b> <%=operator['UID'].toUpperCase() %></p>
    
    <a href="/operatori/<%= operator.OperatorID %>/edit" style="float: left; color: white; margin-right: 20px;" class="btn btn-success">Editeaza</a>
    <form method="POST" action="/operatori/<%= operator.OperatorID %>?_method=DELETE">

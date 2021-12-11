@@ -39,6 +39,16 @@ export class PageComponent {
     }
   }
 
+  vechime(e: any) {
+    e.preventDefault()
+    if ((<HTMLInputElement>document.getElementById('numeop'))!.value && (<HTMLInputElement>document.getElementById('prenumeop'))!.value) {
+      this.nume = (<HTMLInputElement>document.getElementById('numeop'))!.value
+      this.prenume = (<HTMLInputElement>document.getElementById('prenumeop'))!.value
+      console.log(this.nume)
+      location.href=`http://localhost:3000/vechime/${this.nume}/${this.prenume}`
+    }
+  }
+
   postReq() {
     return this.http.post("http://localhost:3000/operatori", {nume: 'Test', prenume: 'Test', dataAngajare: "2021-09-08", uid: '111112'})
     .subscribe(responseData => {

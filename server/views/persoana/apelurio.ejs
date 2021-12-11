@@ -42,19 +42,21 @@
     <% if (rezultat.length != 0) { %>
 
         <% for (let r of rezultat ) {%>
-        <p><b>Nume:</b> <%=r['Nume'] %></p>
-        <p><b>Prenume:</b> <%=r['Prenume'] %></p>
+        <p><b>Nume:</b> <%=r['Nume'].toUpperCase() %></p>
+        <p><b>Prenume:</b> <%=r['Prenume'].toUpperCase() %></p>
         <p><b>Durata:</b> <%=r['Durata'] %> minute</p>
-        <p><b>Data:</b> <%=r['Data'] %></p>
-        <p><b>Descriere:</b> <%=r['Descriere'] %></p>
+        <p><b>Data: </b><%=r['Data'].getDate()%>/<%=r['Data'].getMonth() + 1%>/<%=r['Data'].getFullYear()%></p>
+        <p><b>Descriere:</b> <%=r['Descriere'].toUpperCase() %></p>
         <br>
         <br>
         <% } %>
         <% } else { %>
              <h2>Ne pare rau, niciun apel nu a fost efectuat de catre <%= nm.toUpperCase()  %> <%= p.toUpperCase() %>!</h2>
          <% } %>  
+
+         <a href="http://localhost:4200/apeluri">Inapoi la apeluri</a>
      </body>
      
     
-</body>
+
 </html>

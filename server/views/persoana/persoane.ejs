@@ -43,8 +43,8 @@
     <% if (persoana.length != 0) { %>
         
         <% for (let p of persoana ) {%>
-        <p><b>Nume: </b><%=p['Nume'] %></p>
-        <p><b>Prenume:</b> <%=p['Prenume'] %></p>
+        <p><b>Nume: </b><%=p['Nume'].toUpperCase() %></p>
+        <p><b>Prenume:</b> <%=p['Prenume'].toUpperCase() %></p>
         <a href="/persoane/<%= p.PersoanaID %>" style="float: left;">Detalii</a>
         <br>
         <br>
@@ -52,9 +52,11 @@
         <% } else { %>
              <h2>Ne pare rau, nicio persoana nu a fost inregistrata in baza de date!</h2>
          <% } %>  
-     </body>
+     
      
      <a href="/persoane/new">Adauga persoana</a>
+     <br>
+     <a href="http://localhost:4200">Inapoi la pagina de start</a>
      
 </body>
 </html>
