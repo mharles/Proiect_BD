@@ -42,6 +42,20 @@
   </form>
 
   <br>
+
+  <form>
+    <h3>Vezi operatorii angajati inaintea unui anumit operator</h3>
+    <div class="form-group">
+      <label for="numeop"><b>Nume Operator:</b></label>
+      <input type="text" name="numeop" id="numeop" placeholder="Nume" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="prenumeop"><b>Prenume Operator:</b></label>
+      <input type="text" name="prenumeop" id="prenumeop" placeholder="Prenume" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="vechime($event)">Vezi operatorii mai vechi</button>
+  </form>
+  <br>
 <div class="container" style="display: flex; align-items:center; justify-content:center;">
   <form style="display: inline-block; margin-right: 1em;">
 
@@ -62,18 +76,7 @@
 
 <!-- <button (click)="getReq()">CLICKME</button> -->
 
-<form>
-  <h3>Vezi operatorii angajati inaintea unui anumit operator</h3>
-  <div class="form-group">
-    <label for="numeop"><b>Nume Operator:</b></label>
-    <input type="text" name="numeop" id="numeop" placeholder="Nume" class="form-control">
-  </div>
-  <div class="form-group">
-    <label for="prenumeop"><b>Prenume Operator:</b></label>
-    <input type="text" name="prenumeop" id="prenumeop" placeholder="Prenume" class="form-control">
-  </div>
-  <button type="submit" class="btn btn-primary" (click)="vechime($event)">Vezi operatorii mai vechi</button>
-</form>
+
 
 
 </body>
