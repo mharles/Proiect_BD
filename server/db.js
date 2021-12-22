@@ -507,6 +507,29 @@ app.get('/interval', (req, res) => {
     })
 })
 
+// COMPLEX BONUS
+app.get('/durata', (req, res) => {
+    const conn = new sql.ConnectionPool(dbconfig)
+    conn.connect(function (err) {
+        if (err) 
+            return console.log(err)
+        const request = new sql.Request(conn)
+        request.query(`select c.Denumire, (select max(datediff(MINUTE, sssc.OraSosire, sssc.OraPlecare)) 
+        from ServiciiCauze sssc 
+        where sssc.CauzaID=c.CauzaID) as dt from Cauze c
+        order by dt desc`, async function (err, recordset) {
+            if (err) 
+                return console.log(err)
+            else {
+                const rezultat = await recordset['recordset']
+                console.log(rezultat)
+                res.render('persoana/bonus', {rezultat})
+            }
+            conn.close()
+        })
+    })
+})
+
 
 // COMPLEX 3
 app.get('/vechime/:numeop/:prenumeop', (req, res) => {

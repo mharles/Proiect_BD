@@ -43,4 +43,10 @@ export class ServiciiComponent implements OnInit {
 
       location.href=`http://localhost:3000/interval`
   }
+
+  bonus(e: any) {
+    e.preventDefault()
+
+      location.href=`http://localhost:3000/durata`
+  }
 }
