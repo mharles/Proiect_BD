@@ -46,11 +46,11 @@
     </nav>
     <br>
 
-    <% if (rezultat.length !=0) { %>
+    <% if (result.length !=0) { %>
 
-        <% for (let r of rezultat ) {%>
+        <% for (let r of result ) {%>
             <ul>
-                <% if (r['dt']) { %> 
+               
                 <li>
                     <p><b>Cauza:</b>
                         <%=r['Denumire'].toUpperCase() %>
@@ -59,7 +59,7 @@
                     <p><b>Timp de desfasurare interventie:</b>
                         <%=r['dt'] %> minute
                     </p>
-                    <% } %> 
+                   
 
                     
                 </li>

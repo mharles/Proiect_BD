@@ -522,8 +522,10 @@ app.get('/durata', (req, res) => {
                 return console.log(err)
             else {
                 const rezultat = await recordset['recordset']
+                const result = rezultat.filter(r => r['dt'])
                 console.log(rezultat)
-                res.render('persoana/bonus', {rezultat})
+                console.log(result)
+                res.render('persoana/bonus', {result})
             }
             conn.close()
         })
